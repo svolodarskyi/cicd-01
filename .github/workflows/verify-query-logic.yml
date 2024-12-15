@@ -35,11 +35,12 @@ jobs:
       - name: Verify DuckDB Output
         run: |
           # Define the expected output
-            expected_output=" │ total_locations │ earliest_date │ latest_date │
-                              │      int64      │     date      │    date     │
-                              ├─────────────────┼───────────────┼─────────────┤
-                              │             243 │ 2020-01-01    │ 2024-08-14  │
-                              └─────────────────┴───────────────┴─────────────┘"
+            expected_output="
+            │ total_locations │ earliest_date │ latest_date │
+            │      int64      │     date      │    date     │
+            ├─────────────────┼───────────────┼─────────────┤
+            │             243 │ 2020-01-01    │ 2024-08-14  │
+            └─────────────────┴───────────────┴─────────────┘"
 
           # Compare the actual output with the expected output
             actual_output=$(cat output.txt | grep -A4 "total_locations")
