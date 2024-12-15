@@ -35,16 +35,15 @@ jobs:
       - name: Verify DuckDB Output
         run: |
           # Define the expected output
-            expected_output="
-            │ total_locations │ earliest_date │ latest_date │
+            expected_output="│ total_locations │ earliest_date │ latest_date │
             │      int64      │     date      │    date     │
             ├─────────────────┼───────────────┼─────────────┤
             │             243 │ 2020-01-01    │ 2024-08-14  │
             └─────────────────┴───────────────┴─────────────┘"
 
-          # Compare the actual output with the expected output
+            # Compare the actual output with the expected output
             actual_output=$(cat output.txt | grep -A4 "total_locations")
-            if [ "$(echo "$actual_output" | tr -s '[:space:]')" = "$(echo "$expected_output" | tr -s '[:space:]')" ]; then
+            if [ "$actual_output" = "$expected_output" ]; then
               echo "Output matches expected values."
             else
               echo "Output does not match expected values!"
