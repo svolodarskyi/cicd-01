@@ -44,8 +44,8 @@ jobs:
 
           # Compare the actual output with the expected output
             actual_output=$(cat output.txt | grep -A4 "total_locations")
-            if [ "$(echo "$actual_output" | sed 's/^ *//')" = "$(echo "$expected_output" | sed 's/^ *//')" ]; then
-                echo "Output matches expected values."
+            if [ "$(echo "$actual_output" | tr -s '[:space:]')" = "$(echo "$expected_output" | tr -s '[:space:]')" ]; then
+              echo "Output matches expected values."
             else
               echo "Output does not match expected values!"
               echo "Actual output:"
