@@ -4,6 +4,9 @@ FROM ubuntu:22.04
 # Avoid prompts from apt
 ENV DEBIAN_FRONTEND=noninteractive
 
+# Output the architecture
+RUN echo "Architecture: $(uname -m)"
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     wget \
